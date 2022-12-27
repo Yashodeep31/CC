@@ -1,0 +1,19 @@
+Sketch out and analyze architecture of Moodle cloud portal and Moodle cloud 
+site and create different entities dynamically
+
+
+What is moodle cloud : 
+
+Moodle is an open-source Learning Management System (LMS) – 
+a platform for distributing e-learning content to users, whether that’s 
+training staff, teaching students or any of the other online learning.
+
+If you have 1,000 or fewer users and just want to quickly and easily offer 
+simple e-learning content to your learners, Moodle Cloud should get you up and 
+running.
+
+features of Moodle Cloud : 
+Moodle cloud has three main features : 
+1)Fast and easy to use 
+2)Equipped with powerful education tools
+3)Customisable and trackable

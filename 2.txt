@@ -1,0 +1,12 @@
+Create a scenario in wordpress for Social Marketing, Search engine
+and Sharing Tools.
+
+What is Wordpress : 
+
+WordPress is the simplest, most popular way to create your own website or 
+blog. In fact, WordPress powers over 43.3% of all the websites on the Internet.
+
+WordPress is an open-source content management system (CMS). It’s a popular 
+tool for individuals without any coding experience who want to build websites 
+and blogs. The software doesn’t cost anything. Anyone can install, use, and 
+modify it for free.

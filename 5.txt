@@ -1,0 +1,202 @@
+Demonstrate the use of map and reduce tasks
+
+MapReduce
+MapReduce performs the processing of large data
+sets in a distributed and parallel manner.
+MapReduce consists of two distinct tasks - Map and
+Reduce.
+Two essential daemons of MapReduce: Job Tracker
+& Task Tracker
+
+Hadoop : 
+
+Hadoop is a Java-based programming framework that supports the processing and 
+storage of extremely large datasets on a cluster of inexpensive machines. 
+HDFS, which stands for Hadoop Distributed File System, is responsible for 
+persisting data to disk.
+
+Step 1 — Installing Java
+To get started, we’ll update our package list:
+sudo apt-get update 
+Next, we’ll install OpenJDK, the default Java Development Kit on Ubuntu 16.04.
+sudo apt-get install default-jdk 
+
+Once the installation is complete, let’s check the version.
+java -version 
+Output
+openjdk version "1.8.0_91"
+OpenJDK Runtime Environment (build 1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14)
+OpenJDK 64-Bit Server VM (build 25.91-b14, mixed mode)
+
+Step 2 — Installing Hadoop
+With Java in place, we’ll visit the Apache Hadoop Releases page to find the most 
+recent stable release.
+
+Step 3 — Configuring Hadoop’s Java Home
+Hadoop requires that you set the path to Java, either as an environment variable or in 
+the Hadoop configuration file. The path to Java, /usr/bin/java is a symlink to 
+/etc/alternatives/java, which is in turn a symlink to default Java binary. We will use 
+readlink with the -f flag to follow every symlink in every part of the path, recursively. 
+Then, we’ll use sed to trim bin/java from the output to give us the correct value for 
+JAVA_HOME. To find the default Java path
+readlink -f /usr/bin/java | sed "s:bin/java::"
+Output
+/usr/lib/jvm/java-8-openjdk-amd64/jre/
+You can copy this output to set Hadoop’s Java home to this specific version, which 
+ensures that if the default Java changes, this value will not. Alternatively, you can use 
+the readlink command dynamically in the file so that Hadoop will automatically use 
+whatever Java version is set as the system default. 
+To begin, open hadoop-env.sh:
+sudo nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+Then, choose one of the following options:
+
+Option 1: Set a Static Value
+
+#export JAVA_HOME=${JAVA_HOME}
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
+
+Option 2: Use Readlink to Set the Value Dynamically
+
+#export JAVA_HOME=${JAVA_HOME}
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
+Step 4 — Running Hadoop
+Now we should be able to run Hadoop:
+
+/usr/local/hadoop/bin/hadoop
+Output
+Usage: hadoop [--config confdir] [COMMAND | CLASSNAME]
+ CLASSNAME run the class named CLASSNAME
+or
+ where COMMAND is one of:
+ fs run a generic filesystem user client
+ version print the version
+ jar <jar> run a jar file
+ note: please use "yarn jar" to launch
+ YARN applications, not this command.
+ checknative [-a|-h] check native hadoop and compression libraries availability
+distcp <srcurl> <desturl> copy file or directories recursively
+archive -archiveName NAME -p <parent path> <src>* <dest> create a hadoop archive
+ classpath prints the class path needed to get the
+ credential interact with credential providers
+ Hadoop jar and the required libraries
+ daemonlog get/set the log level for each daemon
+
+The help means we’ve successfully configured Hadoop to run in stand-alone mode. 
+We’ll ensure that it is functioning properly by running the example MapReduce program 
+it ships with. To do so, create a directory called input in our home directory and copy 
+Hadoop’s configuration files into it to use those files as our data.
+
+mkdir ~/input
+cp /usr/local/hadoop/etc/hadoop/*.xml ~/input
+
+Next, we can use the following command to run the MapReduce hadoop-mapreduceexamples program, a Java archive with several options. We’ll invoke its grep program, 
+one of many examples included in hadoop-mapreduce-examples, followed by the input 
+directory, input and the output directory grep_example. The MapReduce grep program 
+will count the matches of a literal word or regular expression. Finally, we’ll supply a 
+regular expression to find occurrences of the word principal within or at the end of a 
+declarative sentence. The expression is case-sensitive, so we wouldn’t find the word if 
+it were capitalized at the beginning of a sentence:
+
+
+/usr/local/hadoop/bin/hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce
+examples-2.7.3.jar grep ~/input ~/grep_example 'principal[.]*'
+
+When the task completes, it provides a summary of what has been processed and 
+errors it has encountered, but this doesn’t contain the actual results.
+
+STANDARD INPUT AND OUTPUT:
+
+Output
+File System Counters
+FILE: Number of bytes read=1247674
+ FILE: Number of bytes written=2324248
+ FILE: Number of read operations=0
+ FILE: Number of large read operations=0
+ FILE: Number of write operations=0
+ Map-Reduce Framework
+ Map input records=2
+ Map output records=2
+ Map output bytes=37
+ Map output materialized bytes=47
+ Input split bytes=114
+ Combine input records=0
+ Combine output records=0
+ Reduce input groups=2
+ Reduce shuffle bytes=47
+ Reduce input records=2
+ Reduce output records=2
+ Spilled Records=4
+ Shuffled Maps =1
+ Failed Shuffles=0
+ Merged Map outputs=1
+ GC time elapsed (ms)=61
+ Total committed heap usage (bytes)=263520256
+ Shuffle Errors
+ BAD_ID=0
+ CONNECTION=0
+ IO_ERROR=0
+ WRONG_LENGTH=0
+ WRONG_MAP=0
+ WRONG_REDUCE=0
+ File Input Format Counters
+ Bytes Read=151
+ File Output Format Counters
+ Bytes Written=37
+
+CONCLUSION / RESULT:
+In this Experiment, we have demonstrated the use of map and reduce tasks using 
+Hadoop.
+
+Steps : 
+
+codewitharjun@cwa: $ sudo apt install openjdk-8-jdk
+[sudo] password for codewitharjun:
+Reading package lists... Done
+Building dependency tree. . . Done
+Reading state information... Done
+openjdk-8-jdk is already the newest version (8u312-b07-Oubuntul).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+codewitharjun@cwa : $ cd /usr/lib/jvm/
+codewitharjun@cwa:/usr/lib/jvm$ ls
+java-1. 8. 0-openj dk-amd64 java-8-openjdk-amd64
+codewitharjun@cwa :/usr/lib/jvn$ cd
+codewitharjun@cwa: -$ clear
+jdk-17
+
+open .bashrc file and paste these commands (sudo nano .bashrc)
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
+export PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin 
+export HADOOP_HOME=~/hadoop-3.2.3/ 
+export PATH=$PATH:$HADOOP_HOME/bin 
+export PATH=$PATH:$HADOOP_HOME/sbin 
+export HADOOP_MAPRED_HOME=$HADOOP_HOME 
+export YARN_HOME=$HADOOP_HOME 
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop 
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native 
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native" 
+export HADOOP_STREAMING=$HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.2.3.jar
+export HADOOP_LOG_DIR=$HADOOP_HOME/logs 
+export PDSH_RCMD_TYPE=ssh
+(for pasting = ctrl + shift + v)
+(then = ctrl + o = enter = ctrl + x)
+
+codewitharjun@cwa: $ sudo nano .bashrc
+todewitharjun@cwa: $ sudo apt-get install ssh
+Reading package lists... Done
+3uilding dependency tree... Done
+eading state information... Done
+ssh is already the newest version (1:8.9p1-3).
+3 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+codewitharjun@cwa: $
+
+Now download hadoop (search apache hadoop download (binary) in the ubuntu itself)
+
+codewitharjun@cwa: s cd
+codeitharj ungcwa: $ tar -zxvf -/Downloads/hadoop-3.2.3. tar. gz
+
+codewitharjun@cwa: $ cd hadoop-3.2.3/
+codewitharjun@cwa:-/hadoop-3.2.3$ cd etc/hadoop/
+codewithariun@cwa:-/hadoon-3.2.3/etc/hadooDS ls
+
+

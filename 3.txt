@@ -1,0 +1,104 @@
+Working in Cloud9/Codenvy to demonstrate different language Evaluation
+
+What is Replit : 
+
+Replit is an online integrated development environment (IDE) that can be 
+used with a variety of programming languages, including JavaScript, Python, 
+Go, C++, Node.js, Rust, and any other language available with the Nix packager.
+
+Replit's key feature is collaborative coding, the ability to share a Repl with 
+one or many other users and see real-time edits across files, message each 
+other, and debug code together.
+
+Generally replit supported over 50 programming languages. 
+
+C : (Sorting array) 
+
+#include <stdio.h>
+void main (){
+   int num[20];
+   int i, j, a, n;
+   printf("enter number of elements in an array");
+   scanf("%d", &n);
+   printf("Enter the element");
+   for (i = 0; i < n; ++i)
+      scanf("%d", &num[i]);
+   for (i = 0; i < n; ++i){
+      for (j = i + 1; j < n; ++j){
+         if (num[i] > num[j]){
+            a = num[i];
+            num[i] = num[j];
+            num[j] = a;
+         }
+      }
+   }
+   printf("The numbers in ascending order is:");
+   for (i = 0; i < n; ++i){
+      printf("%d", num[i]);
+   }
+}
+
+c++ : (swapping without 3rd variable)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a = 5, b = 10, temp;
+
+    cout << "Before swapping." << endl;
+    cout << "a = " << a << ", b = " << b << endl;
+
+    temp = a;
+    a = b;
+    b = temp;
+
+    cout << "\nAfter swapping." << endl;
+    cout << "a = " << a << ", b = " << b << endl;
+
+    return 0;
+}
+
+java : (Fibonacci Series)
+
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello world!");
+     int n1=0,n2=1,n3,i,count=10;    
+ System.out.print(n1+" "+n2);//printing 0 and 1    
+    
+ for(i=2;i<count;++i){//loop starts from 2 because 0 and 1 are already printed       
+  n3=n1+n2;    
+  System.out.print(" "+n3);    
+  n1=n2;    
+  n2=n3;    
+ }
+}
+}
+
+python : (Prime number)
+
+#num = 30
+
+
+num = int(input("Enter a number: "))
+
+# define a flag variable
+flag = False
+
+# prime numbers are greater than 1
+if num > 1:
+    # check for factors
+    for i in range(2, num):
+        if (num % i) == 0:
+            # if factor is found, set flag to True
+            flag = True
+            # break out of loop
+            break
+
+# check if flag is True
+if flag:
+    print(num, "is not a prime number")
+else:
+    print(num, "is a prime number")

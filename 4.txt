@@ -1,0 +1,12 @@
+Installation and configuration of virtual machine with guest OS
+
+What is Oracle Virtualbox : 
+
+Oracle VM VirtualBox is cross-platform virtualization software. It allows 
+users to extend their existing computer to run multiple operating systems 
+including Microsoft Windows, Mac OS X, Linux, and Oracle Solaris, at the same 
+time.
+
+Designed for IT professionals and developers, Oracle VM VirtualBox is 
+ideal for testing, developing, demonstrating, and deploying solutions across 
+multiple platforms from one machine.

@@ -1,0 +1,36 @@
+Installation and configuration of Aneka master node and execution
+of Convolution imaging application
+
+Aneka : 
+
+Aneka is an Application Platform-as-a-Service (Aneka PaaS) for Cloud Computing.
+It acts as a framework for building customized applications and deploying them 
+on either public or private Clouds.
+
+One of the key features of Aneka is its support for Cloud providers such as 
+Amazon EC2, Windows Azure and GoGrid. 
+
+ftp://128.250.29.183
+
+Steps : 
+
+file = add machine 
+
+In cmd : 
+ipconfig
+	copy IPv4 address
+
+past in host ip
+
+now go to uninstalled machines 
+right click on ip = install
+next = finish 
+
+now go to install machine
+right click on ip address = install container
+next = next = (in memory)next = next = next = (check all)next = finish
+
+now go to :
+all programs = manjrasoft = samples = mandelbrot = play = past ip in tcp =
+set username and pass = done.
+
